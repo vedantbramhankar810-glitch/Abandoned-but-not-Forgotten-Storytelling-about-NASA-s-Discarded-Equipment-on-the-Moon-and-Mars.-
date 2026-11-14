@@ -1,0 +1,601 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SPACE RELICS | Space Museum</title>
+
+<style>
+:root {
+  --bg:#071321;
+  --panel:#10243a;
+  --panel2:#172f49;
+  --text:#edf6ff;
+  --muted:#b6c8d9;
+  --cyan:#64dbea;
+  --gold:#ffd27a;
+  --line:#2b4864;
+}
+
+* { box-sizing:border-box; }
+
+html { scroll-behavior:smooth; }
+
+body {
+  margin:0;
+  background:linear-gradient(180deg,#08192b,#050d18);
+  color:var(--text);
+  font:16px/1.6 Arial,sans-serif;
+}
+
+header {
+  padding:45px 7%;
+  background:radial-gradient(circle at 80% 20%,#245477,#0b1a2c 55%,#071321);
+}
+
+nav, .hero, main {
+  max-width:1200px;
+  margin:auto;
+}
+
+nav {
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+}
+
+.logo {
+  color:var(--cyan);
+  font-weight:bold;
+  letter-spacing:3px;
+}
+
+a { color:var(--cyan); font-weight:bold; }
+
+.hero { margin:55px auto; }
+
+.eyebrow {
+  color:var(--cyan);
+  text-transform:uppercase;
+  letter-spacing:3px;
+  font-size:12px;
+  font-weight:bold;
+}
+
+h1 {
+  font-size:clamp(42px,7vw,76px);
+  line-height:1;
+}
+
+h2 { font-size:30px; }
+
+.hero p {
+  max-width:760px;
+  color:var(--muted);
+  font-size:19px;
+}
+
+main { padding:28px 5% 60px; }
+
+button {
+  cursor:pointer;
+  border:0;
+  border-radius:9px;
+  padding:12px 18px;
+  font-weight:bold;
+  background:var(--cyan);
+  color:#071321;
+  font-size:15px;
+}
+
+.secondary {
+  background:#213c58;
+  color:white;
+  border:1px solid #46627d;
+}
+
+.intro-grid,.interest-grid {
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:16px;
+}
+
+.panel,.interest,.craft,.video-panel {
+  background:linear-gradient(145deg,var(--panel2),var(--panel));
+  border:1px solid var(--line);
+  border-radius:16px;
+  padding:20px;
+}
+
+.panel p,.interest p,.craft p {
+  color:var(--muted);
+}
+
+.interest {
+  text-align:left;
+  color:white;
+  transition:.2s;
+}
+
+.interest:hover {
+  border-color:var(--cyan);
+  transform:translateY(-3px);
+}
+
+.emoji { font-size:38px; }
+
+#library { display:none; }
+
+.section-title { margin:42px 0 16px; }
+.section-title p { color:var(--muted); }
+
+.tabs {
+  display:flex;
+  gap:9px;
+  flex-wrap:wrap;
+  margin:18px 0;
+}
+
+.tab {
+  background:#142b42;
+  color:white;
+  border:1px solid var(--line);
+}
+
+.tab.active {
+  background:var(--cyan);
+  color:#071321;
+}
+
+.video-panel { margin:18px 0 22px; }
+
+iframe {
+  width:100%;
+  aspect-ratio:16/9;
+  border:0;
+  border-radius:10px;
+  background:black;
+}
+
+.video-note { color:var(--muted); font-size:13px; }
+
+.cards {
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:16px;
+}
+
+.craft { padding:0; overflow:hidden; }
+
+.craft-top {
+  padding:13px 18px;
+  background:#0a1b2d;
+  display:flex;
+  justify-content:space-between;
+  gap:10px;
+}
+
+.tag {
+  color:var(--gold);
+  font-size:12px;
+  font-weight:bold;
+}
+
+.craft-body { padding:18px; }
+
+.meta {
+  font-size:13px;
+  border-top:1px solid var(--line);
+  padding-top:12px;
+  margin-top:13px;
+}
+
+.callout {
+  border-left:4px solid var(--gold);
+  padding:12px 16px;
+  background:#172b40;
+  margin:20px 0;
+}
+
+footer {
+  text-align:center;
+  color:var(--muted);
+  padding:28px;
+}
+
+@media(max-width:800px) {
+  .intro-grid,.interest-grid,.cards {
+    grid-template-columns:1fr;
+  }
+  header { padding:30px 6%; }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+<nav>
+  <div class="logo">✦ SPACE RELICS</div>
+  <a href="#purpose">About Museum</a>
+</nav>
+
+<div class="hero">
+  <div class="eyebrow">A Guided Digital Space Museum</div>
+  <h1>ABANDONED<br>BUT NOT FORGOTTEN.</h1>
+
+  <p>
+    Welcome, explorer! Space missions leave behind
+    scientific instruments, landing hardware, robotic
+    explorers and spacecraft travelling through space.
+  </p>
+
+  <p>
+    Discover their stories, engineering and scientific
+    achievements in this interactive space museum.
+  </p>
+
+  <a href="#interest"><button>Begin Museum Tour ↓</button></a>
+</div>
+</header>
+
+<main>
+
+<!-- INTRODUCTION -->
+
+<section id="purpose">
+<div class="eyebrow">First, the Big Idea</div>
+<h2>Why Does This Museum Exist?</h2>
+
+<div class="intro-grid">
+  <div class="panel">
+    <h3>🔎 Discover</h3>
+    <p>Explore real equipment from Moon landings, Mars missions and deep space.</p>
+  </div>
+
+  <div class="panel">
+    <h3>🧠 Understand</h3>
+    <p>Learn the engineering problems each object solved and the science it made possible.</p>
+  </div>
+
+  <div class="panel">
+    <h3>📖 Remember</h3>
+    <p>Discover what happened to machines after their missions ended.</p>
+  </div>
+</div>
+
+<div class="callout">
+<b>Important:</b> Not every space relic is abandoned.
+Voyager 1 and New Horizons are still travelling.
+</div>
+</section>
+
+<!-- DESTINATION SELECTION -->
+
+<section id="interest">
+<div class="section-title">
+  <div class="eyebrow">Your Turn to Explore</div>
+  <h2>Which Part of Space Interests You Most?</h2>
+  <p>Choose a destination to explore its collection.</p>
+</div>
+
+<div class="interest-grid">
+
+  <button class="interest" data-place="moon">
+    <div class="emoji">🌕</div>
+    <h3>The Moon</h3>
+    <p>Historic landings, lunar experiments and equipment.</p>
+    Explore Moon →
+  </button>
+
+  <button class="interest" data-place="mars">
+    <div class="emoji">🔴</div>
+    <h3>Mars</h3>
+    <p>Rovers, landers and landing technology.</p>
+    Explore Mars →
+  </button>
+
+  <button class="interest" data-place="deep">
+    <div class="emoji">🌌</div>
+    <h3>Deep Space</h3>
+    <p>Spacecraft travelling beyond the planets.</p>
+    Explore Deep Space →
+  </button>
+
+</div>
+</section>
+
+<!-- COLLECTION -->
+
+<section id="library">
+
+<div class="section-title">
+  <div class="eyebrow">Selected Collection</div>
+  <h2 id="collectionTitle"></h2>
+  <p id="collectionIntro"></p>
+</div>
+
+<div class="tabs">
+  <button class="tab active" data-place="moon">🌕 Moon</button>
+  <button class="tab" data-place="mars">🔴 Mars</button>
+  <button class="tab" data-place="deep">🌌 Deep Space</button>
+</div>
+
+<div class="video-panel">
+  <div class="eyebrow">Official Mission Video</div>
+  <h3 id="videoTitle"></h3>
+
+  <iframe id="videoFrame" src=""
+    title="NASA Mission Video"
+    allowfullscreen loading="lazy">
+  </iframe>
+
+  <p class="video-note" id="videoNote"></p>
+  <a id="videoSource" href="#" target="_blank" rel="noopener">
+    Open Official Video Source ↗
+  </a>
+</div>
+
+<div class="cards" id="craftCards"></div>
+
+<div class="callout">
+<b>Keep Exploring:</b> Read official NASA mission information
+to learn more about every space relic.
+</div>
+
+<button class="secondary" id="backTop">
+← Back to Destinations
+</button>
+
+</section>
+
+<!-- REFERENCES -->
+
+<section class="section-title">
+<div class="eyebrow">Research References</div>
+<h2>Official Information First</h2>
+<p>Explore these official space agency websites.</p>
+
+<p>
+<a href="https://science.nasa.gov/" target="_blank">NASA Science</a> |
+<a href="https://www.jpl.nasa.gov/" target="_blank">NASA JPL</a> |
+<a href="https://plus.nasa.gov/" target="_blank">NASA+</a>
+</p>
+</section>
+
+</main>
+
+<footer>
+SPACE RELICS · Educational Space Museum
+<br>HTML + CSS + JavaScript
+</footer>
+
+<script>
+
+// SPACE MUSEUM COLLECTION DATA
+
+const collections = {
+
+moon: {
+title:"🌕 The Moon: Footprints and Machines",
+intro:"The Moon became humanity's first off-Earth laboratory. Astronauts and robotic missions left instruments and landing hardware to study its surface.",
+videoTitle:"NASA: Apollo 11 First Lunar Landing",
+video:"https://www.youtube-nocookie.com/embed/9HQfauGJaTs",
+source:"https://www.nasa.gov/mission/apollo-11/",
+note:"NASA Apollo 11 mission footage and history.",
+
+items:[
+["Apollo 11 Passive Seismic Experiment","1969 · Apollo 11",
+"The first lunar seismometer listened for moonquakes and meteorite impacts.",
+"Left on the Moon. It stopped operating after about three weeks.",
+"https://science.nasa.gov/resource/apollo-11-seismic-experiment/"],
+
+["Apollo 11 Laser Retroreflector","1969 · Apollo 11",
+"Special mirrors reflect laser pulses from Earth to help measure the Earth-Moon distance.",
+"Still scientifically useful. It needs no electrical power.",
+"https://www.nasa.gov/image-article/retroreflectors-from-apollo-mars/"],
+
+["Apollo 12 ALSEP Science Station","1969 · Apollo 12",
+"A collection of experiments studying moonquakes, magnetic fields and the lunar environment.",
+"Left on the Moon. Operations ended in 1977.",
+"https://www.nasa.gov/missions/apollo/apollo-12-the-pinpoint-mission/"],
+
+["Apollo Lunar Roving Vehicle","1971-72 · Apollo Missions",
+"The battery-powered rover helped astronauts travel farther and collect lunar samples.",
+"Three rovers remain on the Moon.",
+"https://www.nasa.gov/specials/apollo50th/missions.html"],
+
+["Apollo Lunar Module Descent Stage","1969-72 · Apollo Missions",
+"The descent stage carried astronauts safely to the Moon and supported their return to lunar orbit.",
+"Left on the Moon at Apollo landing locations.",
+"https://www.nasa.gov/missions/apollo/"],
+
+["Surveyor 3 Robotic Lander","1967 · Surveyor 3",
+"Surveyor 3 photographed the Moon and examined lunar soil using a sampler.",
+"Remains on the Moon. Some parts were returned to Earth.",
+"https://science.nasa.gov/mission/surveyor-3/"]
+]
+},
+
+mars: {
+title:"🔴 Mars: Machines That Made Landing Possible",
+intro:"Mars is difficult to reach and land on. Rovers, heat shields and descent systems help us explore the Red Planet.",
+videoTitle:"NASA: Perseverance Landing on Mars",
+video:"https://www.youtube-nocookie.com/embed/4czjS9h4Fpg",
+source:"https://science.nasa.gov/resource/perseverance-rovers-descent-and-touchdown-on-mars-onboard-camera-views/",
+note:"NASA/JPL footage of Perseverance landing in 2021.",
+
+items:[
+["Sojourner Rover","1997 · Mars Pathfinder",
+"The first successful wheeled rover to operate on another planet. It studied rocks and soil.",
+"Remains at the Pathfinder landing site.",
+"https://science.nasa.gov/mission/mars-pathfinder/"],
+
+["Spirit Rover","2004 · Mars Exploration Rover",
+"Spirit explored Gusev Crater and found evidence of ancient water activity.",
+"Remains on Mars. Mission ended in 2011.",
+"https://science.nasa.gov/mission/mer-spirit/"],
+
+["Opportunity Rover","2004 · Mars Exploration Rover",
+"Opportunity travelled far beyond its planned mission and discovered evidence of ancient water.",
+"Remains on Mars. Mission ended in 2019.",
+"https://science.nasa.gov/mission/mer-opportunity/"],
+
+["Curiosity Heat Shield","2012 · Mars Science Laboratory",
+"Protected Curiosity during its fiery entry through the Martian atmosphere.",
+"Jettisoned during landing.",
+"https://science.nasa.gov/resource/curiosity-bids-goodbye-to-heat-shield/"],
+
+["Perseverance Heat Shield and Backshell","2021 · Mars 2020",
+"Protected Perseverance during its journey through the Martian atmosphere.",
+"Left on Mars after separation.",
+"https://science.nasa.gov/mission/mars-2020-perseverance/rover-components/"],
+
+["Perseverance Powered Descent Stage","2021 · Mars 2020",
+"The sky crane used rockets to lower Perseverance gently onto Mars.",
+"Flew away and crashed nearby after deployment.",
+"https://www.nasa.gov/news-release/nasas-mars-perseverance-rover-provides-front-row-seat-to-landing-first-audio-recording-of-red-planet/"],
+
+["Ingenuity Mars Helicopter","2021-2024 · Mars 2020",
+"Demonstrated powered flight on another planet and completed 72 flights.",
+"Grounded after its final flight in January 2024.",
+"https://science.nasa.gov/mission/mars-2020-perseverance/ingenuity-mars-helicopter/"]
+]
+},
+
+deep: {
+title:"🌌 Deep Space: Travellers Beyond the Planets",
+intro:"Some spacecraft travel far beyond the planets to explore distant worlds and investigate interstellar space.",
+videoTitle:"NASA/JPL: Voyager - Humanity's Farthest Journey",
+video:"https://www.youtube-nocookie.com/embed/UVP2tLl0fDU",
+source:"https://www.jpl.nasa.gov/videos/voyager-humanitys-farthest-journey/",
+note:"Official NASA/JPL documentary about Voyager.",
+
+items:[
+["Pioneer 10","1972 · Jupiter Mission",
+"The first spacecraft to fly past Jupiter. It studied Jupiter and travelled through the asteroid belt.",
+"No longer communicating. It continues travelling outward.",
+"https://science.nasa.gov/mission/pioneer-10/"],
+
+["Pioneer 11","1973 · Jupiter and Saturn",
+"The first spacecraft to study Saturn up close.",
+"Last contact was in 1995.",
+"https://science.nasa.gov/mission/pioneer-11/"],
+
+["Voyager 1","1977 · Interstellar Space",
+"Studied Jupiter and Saturn before travelling beyond the heliosphere. It carries the Golden Record.",
+"Still operating as an extended mission with limited systems.",
+"https://science.nasa.gov/mission/voyager/voyager-1/"],
+
+["Voyager 2","1977 · Outer Planet Exploration",
+"Visited Jupiter, Saturn, Uranus and Neptune. It is the only spacecraft to have visited Uranus and Neptune.",
+"Still operating in interstellar space.",
+"https://science.nasa.gov/mission/voyager/voyager-2/"],
+
+["Galileo Spacecraft","1989-2003 · Jupiter",
+"Studied Jupiter and its moons and found evidence suggesting Europa may have a subsurface ocean.",
+"Deliberately sent into Jupiter in 2003.",
+"https://science.nasa.gov/mission/galileo/"],
+
+["Cassini Spacecraft","1997-2017 · Saturn",
+"Studied Saturn, its rings and moons. Its Huygens probe landed on Titan.",
+"Deliberately sent into Saturn in 2017.",
+"https://science.nasa.gov/mission/cassini/"],
+
+["New Horizons","2006 · Pluto and Kuiper Belt",
+"Provided the first close-up view of Pluto and studied a Kuiper Belt object.",
+"Still travelling through the Kuiper Belt.",
+"https://science.nasa.gov/mission/new-horizons/"]
+]
+}
+
+};
+
+
+// DISPLAY SELECTED COLLECTION
+
+function showCollection(place) {
+
+  const data = collections[place];
+
+  if (!data) return;
+
+  document.getElementById("library").style.display="block";
+
+  document.getElementById("collectionTitle").textContent=data.title;
+  document.getElementById("collectionIntro").textContent=data.intro;
+
+  document.getElementById("videoTitle").textContent=data.videoTitle;
+  document.getElementById("videoFrame").src=data.video;
+  document.getElementById("videoSource").href=data.source;
+  document.getElementById("videoNote").textContent=data.note;
+
+  const cards=document.getElementById("craftCards");
+  cards.innerHTML="";
+
+  data.items.forEach((item,index)=>{
+
+    const card=document.createElement("article");
+    card.className="craft";
+
+    card.innerHTML=`
+      <div class="craft-top">
+        <span class="tag">STORY ${index+1}</span>
+        <span class="tag">${item[1]}</span>
+      </div>
+
+      <div class="craft-body">
+        <h3></h3>
+        <p></p>
+        <p></p>
+        <div class="meta">
+          <a target="_blank" rel="noopener">Read Official Mission Source ↗</a>
+        </div>
+      </div>
+    `;
+
+    card.querySelector("h3").textContent=item[0];
+    card.querySelectorAll("p")[0].textContent=item[2];
+    card.querySelectorAll("p")[1].textContent="Where it is now: "+item[3];
+
+    const link=card.querySelector("a");
+    link.href=item[4];
+
+    cards.appendChild(card);
+  });
+
+  document.querySelectorAll(".tab").forEach(tab=>{
+    tab.classList.toggle("active",tab.dataset.place===place);
+  });
+
+  document.getElementById("library").scrollIntoView({
+    behavior:"smooth"
+  });
+}
+
+
+// DESTINATION AND TAB BUTTONS
+
+document.querySelectorAll("[data-place]").forEach(button=>{
+  button.addEventListener("click",()=>{
+    showCollection(button.dataset.place);
+  });
+});
+
+
+// BACK BUTTON
+
+document.getElementById("backTop").addEventListener("click",()=>{
+
+  document.getElementById("videoFrame").src="";
+  document.getElementById("library").style.display="none";
+
+  document.getElementById("interest").scrollIntoView({
+    behavior:"smooth"
+  });
+
+});
+
+</script>
+</body>
+</html>
